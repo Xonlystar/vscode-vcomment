@@ -39,7 +39,7 @@ module.exports = {
       if (content && content.trim()) {
         let arr = content.split(',')
         arr.map((value) => {
-          result.push(`* ${config.param.prefix} ${value} ${config.param.intro}`)
+          result.push(`* ${config.param.prefix} ${value.trim()} ${config.param.intro}`)
         })
       }
       // if (!!~content.indexOf('return')) {
