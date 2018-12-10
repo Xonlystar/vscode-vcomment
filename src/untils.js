@@ -1,4 +1,6 @@
 const vscode = require('vscode')
+const os = require('os')
+let newline = os.platform() === 'win32' ? '\r\n' : '\r'
 let config = vscode.workspace.getConfiguration("vcomment")
 const { formatDate } = require('./date')
 console.log(config)
@@ -10,7 +12,7 @@ module.exports = {
         let active = editor.selection.active
         result.map((text, index) => { 
           let insertPosition = new vscode.Position(active.line + index, active.character)
-          let content = index === result.length - 1 ? text : text + '\r\n'
+          let content = index === result.length - 1 ? text : text + newline
           editor.insertSnippet(new vscode.SnippetString(content), insertPosition)
         })
       }
@@ -34,10 +36,12 @@ module.exports = {
       let positionEnd = new vscode.Position(editor.document.lineCount, 0)
       let content = editor.document.getText(new vscode.Range(positionStart, positionEnd)) || ''
       content = content.slice(content.indexOf('(') + 1, content.indexOf(')'))
-      let arr = content.split(',')
-      arr.map((value) => {
-        result.push(`* ${config.param.prefix} ${value} ${config.param.intro}`)
-      })
+      if (content && content.trim()) {
+        let arr = content.split(',')
+        arr.map((value) => {
+          result.push(`* ${config.param.prefix} ${value} ${config.param.intro}`)
+        })
+      }
       // if (!!~content.indexOf('return')) {
       //   result.push(`* ${config.returns.prefix}`)
       // }
