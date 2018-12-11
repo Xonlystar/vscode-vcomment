@@ -1,7 +1,7 @@
-# Change Log
-All notable changes to the "onlystar" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-- Initial release
+# 更改日志
+| 版本 | 日期 | 日志 |
+|---|---|---|
+| 0.0.4 | 2018/12/11 | 修复注释中有默认值的情况，`function (a, b=10, c)`, 修复多值出现的空格问题。|
+| 0.0.3 | 2018/12/05 | 加入vscode设置界面动态修改配置功能|
+| 0.0.2 | 2018/11/29 | 使用指南编辑，logo等信息|
+| 0.0.1 | 2018/11/25 | 初始化代码，基本注释功能|

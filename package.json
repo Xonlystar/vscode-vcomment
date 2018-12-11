@@ -3,7 +3,7 @@
     "publisher": "onlystar",
     "displayName": "vcomment",
     "description": "这是一个非常好用的函数注释插件, 你可以在很轻松的实现函数的注释,目前已兼容vue，javascript文件",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "engines": {
         "vscode": "^1.29.0"
     },

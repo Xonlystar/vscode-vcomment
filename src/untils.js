@@ -3,7 +3,6 @@ const os = require('os')
 let newline = os.platform() === 'win32' ? '\r\n' : '\r'
 let config = vscode.workspace.getConfiguration("vcomment")
 const { formatDate } = require('./date')
-console.log(config)
 
 module.exports = {
   Insert: (editor, result = []) => {
@@ -39,7 +38,13 @@ module.exports = {
       if (content && content.trim()) {
         let arr = content.split(',')
         arr.map((value) => {
-          result.push(`* ${config.param.prefix} ${value.trim()} ${config.param.intro}`)
+          let val = value ? value.trim() : value
+          let index = val.indexOf('=')
+          if (!!~index) {
+            val = val.slice(0, index)
+            val && (val = val.trim())
+          }
+          result.push(`* ${config.param.prefix} ${val} ${config.param.intro}`)
         })
       }
       // if (!!~content.indexOf('return')) {
